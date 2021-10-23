@@ -1,0 +1,11 @@
+ul {
+    list-style: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    overflow: hidden;
+}
+
+ul>li {
+    list-style: none;
+}

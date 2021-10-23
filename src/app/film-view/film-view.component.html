@@ -1,0 +1,5 @@
+<ul class="bg-danger pt-5">
+    <li class="" *ngFor="let film of films; let index = index;">
+        <app-film-component [filmData]="films[index]"></app-film-component>
+    </li>
+</ul>

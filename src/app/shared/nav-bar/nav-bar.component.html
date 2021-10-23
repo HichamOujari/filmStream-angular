@@ -1,0 +1,9 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Film Stream</a>
+    </div>
+    <div class="searchBox">
+        <input #searchedText type="text" placeholder="Search" />
+        <button (click)="setSearch(searchedText.value)">Search</button>
+    </div>
+</nav>
