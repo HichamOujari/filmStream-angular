@@ -5,6 +5,36 @@ nav>.searchBox {
     display: flex;
 }
 
+nav>.container>.ele {
+    display: flex;
+}
+
+nav>.container>.ele>a {
+    font-size: 22px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+nav>.container>.ele>ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 5px;
+}
+
+nav>.container>.ele>ul>li {
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 30px;
+    color: white;
+}
+
+nav>.container>.ele>ul>li>a {
+    text-decoration: none;
+    color: white;
+}
+
 nav>.searchBox>input {
     border: 1px solid transparent;
     margin-right: 20px;

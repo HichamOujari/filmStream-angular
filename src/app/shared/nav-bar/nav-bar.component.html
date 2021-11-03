@@ -1,9 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">Film Stream</a>
+        <div class="ele">
+            <a class="navbar-brand" href="#">Film Stream</a>
+            <ul>
+                <li><a routerLink="/">Home</a></li>
+                <li><a routerLink="favoris">Favoris</a></li>
+            </ul>
+        </div>
     </div>
     <div class="searchBox">
-        <input #searchedText type="text" placeholder="Search" />
+        <input #searchedText (ngModelChange)="setSearch(searchedText.value)" type="text" placeholder="Search" />
         <button (click)="setSearch(searchedText.value)">Search</button>
     </div>
 </nav>

@@ -6,6 +6,30 @@ ul {
     overflow: hidden;
 }
 
+.backDARK {
+    background-color: black;
+}
+
 ul>li {
     list-style: none;
+}
+
+.paginationbar,
+.paginationbar>ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginationbar>ul>li {
+    color: grey;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.cursorPoint {
+    cursor: pointer;
 }

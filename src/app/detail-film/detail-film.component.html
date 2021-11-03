@@ -1,0 +1,11 @@
+<div class="detailComp">
+    <img class="first" src="{{service.getImage(film.poster_path)}}" />
+    <div class="second">
+        <p class="title">{{film.title}} <span>( {{film.original_title}} )</span></p>
+        <div class="rate_date">
+            <p class="rating" *ngIf="film!=null">{{film.vote_average}}/10</p>
+            <p class="date" *ngIf="film!=null">{{film.release_date}}</p>
+        </div>
+        <p class="desc" *ngIf="film!=null">{{film.overview}}</p>
+    </div>
+</div>

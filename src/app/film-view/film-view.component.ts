@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-film-view',
@@ -9,11 +9,21 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FilmViewComponent implements OnInit {
 
   @Input() films;
+  @Input() totalPage;
+  @Input() currentPage;
+
+  @Output() setPage = new EventEmitter<Number>();
 
   constructor() {
 
   }
 
+  previous(){
+    this.setPage.emit(this.currentPage-1)
+  }
+  next(){
+    this.setPage.emit(this.currentPage+1)
+  }
   ngOnInit(): void {
   }
 }

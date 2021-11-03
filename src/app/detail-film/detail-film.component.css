@@ -1,0 +1,59 @@
+.detailComp {
+    height: Calc(100vh - 67px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: black;
+}
+
+.detailComp>.first {
+    width: 40%;
+    height: 80%;
+}
+
+.detailComp>.second {
+    margin-left: 20px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: space-around;
+}
+
+.detailComp>.second>.title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.detailComp>.second>.desc {
+    font-size: 22px;
+}
+
+.detailComp>.second>.rate_date {
+    display: flex;
+}
+
+.detailComp>.second>.rate_date>.rating {
+    margin-right: 40px;
+    font-size: 17px;
+}
+
+.detailComp>.second>.rate_date>.rating::before {
+    content: "Rating :";
+    text-decoration: underline;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.detailComp>.second>.rate_date>.date::before {
+    content: "Date  :";
+    text-decoration: underline;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.detailComp>.second>.rate_date>.date {
+    font-size: 17px;
+}
