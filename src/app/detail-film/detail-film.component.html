@@ -1,4 +1,6 @@
 <div class="detailComp">
+    <p class="addFavoris" *ngIf="film.isFavoris!=null">Add to Favoris</p>
+    <i *ngIf="film.isFavoris==null" class="bi bi-heart-fill inFavoris"></i>
     <img class="first" src="{{service.getImage(film.poster_path)}}" />
     <div class="second">
         <p class="title">{{film.title}} <span>( {{film.original_title}} )</span></p>

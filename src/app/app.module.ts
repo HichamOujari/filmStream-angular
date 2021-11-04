@@ -6,21 +6,12 @@ import { FilmComponentComponent } from './film-component/film-component.componen
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailFilmComponent } from './detail-film/detail-film.component';
-import {FormsModule} from '@angular/forms';
-
-import { RouterModule, Routes } from '@angular/router';
+import { FormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { FavorisComponent } from './favoris/favoris.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
-
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'movie/:idmovie', component: DetailFilmComponent },
-  { path: 'favoris', component: FavorisComponent },
-  { path: 'not-found', component: NotFoundComponent },
-  { path: '**', redirectTo:"not-found" },
-];
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
 
@@ -37,9 +28,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
     RouterModule,
-    RouterModule.forRoot(routes)
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

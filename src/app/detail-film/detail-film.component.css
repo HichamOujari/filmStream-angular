@@ -6,6 +6,28 @@
     padding-left: 30px;
     padding-right: 30px;
     background-color: black;
+    position: relative;
+}
+
+.detailComp>.addFavoris,
+.inFavoris {
+    position: absolute;
+    background: rgb(177, 23, 48);
+    top: 30px;
+    right: 30px;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+    color: white;
+    transition: 1s;
+    transform-origin: all;
+    border: 2px solid transparent;
+    font-weight: bold;
+}
+
+.detailComp>.addFavoris:hover {
+    color: rgb(177, 23, 48);
+    background: white;
+    border: 2px solid rgb(177, 23, 48);
 }
 
 .detailComp>.first {

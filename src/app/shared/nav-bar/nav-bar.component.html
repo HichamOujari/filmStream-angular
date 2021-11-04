@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="searchBox">
-        <input #searchedText (ngModelChange)="setSearch(searchedText.value)" type="text" placeholder="Search" />
-        <button (click)="setSearch(searchedText.value)">Search</button>
+        <input (ngModelChange)="setSearch($event)" [ngModel]="searchedText" type="text" placeholder="Search" />
+        <button (click)="setSearch(searchedText)">Search</button>
     </div>
 </nav>

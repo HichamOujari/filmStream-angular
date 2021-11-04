@@ -29,12 +29,17 @@ export class FilmService {
 
   getFilmById(id) {
     const url = 'https://api.themoviedb.org/3/movie/' + id + '?api_key=' + this.API_TOKEN + '&language=fr';
-    return this.http.get<Film>(url)
-
+    this.http.get<Array<Film>>(url).subscribe(films=>{
+      this.films = films;
+      this.emitFilmsSubject()
+    })
   }
   getFilms(text: String, page: number) {
     const url = 'https://api.themoviedb.org/3/search/movie?api_key=' + this.API_TOKEN + '&language=fr&query=' + text + "&page=" + page
-    return this.http.get<Array<Film>>(url)
+    this.http.get<Array<Film>>(url).subscribe(films=>{
+      this.films = films;
+      this.emitFilmsSubject()
+    })
   }
 
   getImage(name: String) {
