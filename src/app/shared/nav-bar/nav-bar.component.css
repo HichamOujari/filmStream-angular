@@ -14,6 +14,18 @@ nav>.container>.ele>a {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+nav>.signUp {
+    border: 1px solid transparent;
+    background-color: #d13139;
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
 nav>.container>.ele>ul {
     list-style: none;
     display: flex;

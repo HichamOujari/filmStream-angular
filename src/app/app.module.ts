@@ -12,6 +12,8 @@ import { FavorisComponent } from './favoris/favoris.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 @NgModule({
 
@@ -24,6 +26,8 @@ import { RouterModule, Routes } from '@angular/router';
     HomeComponent,
     FavorisComponent,
     NotFoundComponent,
+    SignupComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,

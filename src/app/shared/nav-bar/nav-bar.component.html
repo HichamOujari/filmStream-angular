@@ -10,6 +10,9 @@
     </div>
     <div class="searchBox">
         <input (ngModelChange)="setSearch($event)" [ngModel]="searchedText" type="text" placeholder="Search" />
-        <button (click)="setSearch(searchedText)">Search</button>
+        <button>Search</button>
     </div>
+    <div *ngIf="authService.isAuth()==false" [routerLink]="['sign-in']" class="signUp">SignIn</div>
+    <div *ngIf="authService.isAuth()==true" class="signUp" (click)="logout()">Deconnect</div>
+
 </nav>

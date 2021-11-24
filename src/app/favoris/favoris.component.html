@@ -1,31 +1,10 @@
 <div class="favorisComponant">
     <p class="title">Liste des films en favoris :</p>
     <ul>
-        <li>
-            <img src="https://image.tmdb.org/t/p/w300/qpyaW4xUPeIiYA5ckg5zAZFHvsb.jpg" />
+        <li [routerLink]="['../movie/'+films[index].id]" routerLinkActive="active"  *ngFor="let film of films; let index = index;">
+            <img src="{{service.getImage(films[index].poster_path)}}" />
             <div class="left">
-                <p>La casa de papel</p>
-                <i class="bi bi-heart-fill 2x"></i>
-            </div>
-        </li>
-        <li>
-            <img src="https://image.tmdb.org/t/p/w300/qpyaW4xUPeIiYA5ckg5zAZFHvsb.jpg" />
-            <div class="left">
-                <p>La casa de papel</p>
-                <i class="bi bi-heart-fill 2x"></i>
-            </div>
-        </li>
-        <li>
-            <img src="https://image.tmdb.org/t/p/w300/qpyaW4xUPeIiYA5ckg5zAZFHvsb.jpg" />
-            <div class="left">
-                <p>La casa de papel</p>
-                <i class="bi bi-heart-fill 2x"></i>
-            </div>
-        </li>
-        <li>
-            <img src="https://image.tmdb.org/t/p/w300/qpyaW4xUPeIiYA5ckg5zAZFHvsb.jpg" />
-            <div class="left">
-                <p>La casa de papel</p>
+                <p>{{films[index].title}}</p>
                 <i class="bi bi-heart-fill 2x"></i>
             </div>
         </li>

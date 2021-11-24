@@ -1,9 +1,9 @@
 <div class="detailComp">
-    <p class="addFavoris" *ngIf="film.isFavoris!=null">Add to Favoris</p>
-    <i *ngIf="film.isFavoris==null" class="bi bi-heart-fill inFavoris"></i>
-    <img class="first" src="{{service.getImage(film.poster_path)}}" />
+    <p (click)="addFavoris()" class="addFavoris" *ngIf="isFavoris==false">Add to Favoris</p>
+    <i (click)="removeFavoris()" *ngIf="isFavoris==true" class="bi bi-heart-fill inFavoris"></i>
+    <img class="first" *ngIf="film != undefined" src="{{service.getImage(film.poster_path)}}" />
     <div class="second">
-        <p class="title">{{film.title}} <span>( {{film.original_title}} )</span></p>
+        <p *ngIf="film != undefined" class="title">{{film.title}} <span>( {{film.original_title}} )</span></p>
         <div class="rate_date">
             <p class="rating" *ngIf="film!=null">{{film.vote_average}}/10</p>
             <p class="date" *ngIf="film!=null">{{film.release_date}}</p>
@@ -11,3 +11,21 @@
         <p class="desc" *ngIf="film!=null">{{film.overview}}</p>
     </div>
 </div>
+<div *ngIf='urlVideo!=""' class="trailer">
+    <iframe title="YouTube video player" [src]="urlVideo" frameborder="0" autoplay allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="addReview">
+    <p class="title">Commentaire :</p>
+    <form (submit)="addrevue(revuedetail)" class="content">
+        <textarea #revuedetail class="textArea"></textarea>
+        <button>Valider</button>
+    </form>
+</div>
+
+<ul class="revues">
+    <li *ngFor="let r of revues; let index = index;">
+        <p class="name">By <span>{{r["name"]}}</span> at {{r["date"]}} : </p>
+        <p class="content">{{r["content"]}}</p>
+    </li>
+</ul>

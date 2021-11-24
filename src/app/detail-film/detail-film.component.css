@@ -44,6 +44,20 @@
     justify-content: space-around;
 }
 
+.trailer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background: black;
+    padding-bottom: 20px;
+}
+
+.trailer>iframe {
+    width: 80%;
+    height: 100%;
+}
+
 .detailComp>.second>.title {
     font-size: 25px;
     font-weight: bold;
@@ -79,3 +93,55 @@
 .detailComp>.second>.rate_date>.date {
     font-size: 17px;
 }
+
+.addReview,
+.revues {
+    background: black;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 40px;
+}
+
+.addReview>.title {
+    color: white;
+    font-size: 20px;
+}
+
+.addReview>.content {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.addReview>.content>.textArea {
+    width: 90%;
+    margin-right: 40px;
+    height: 80px;
+}
+
+.addReview>.content>button {
+    background: rgb(97, 197, 97);
+    border: 2px 2px rgb(97, 197, 97);
+    outline: none;
+}
+
+.revues {
+    color: white;
+    list-style: none;
+}
+
+.revues>li {
+    margin-bottom: 50px;
+}
+
+.revues>li>.name {
+    font-size: 20px;
+}
+
+.revues>li>.name>span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.revues>li>.content {}
