@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Film } from "../models/film";
 import { Revue } from "../models/revue";
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +52,7 @@ export class FilmService {
 
   getFilms(text: String, page: number) {
     const url = 'https://api.themoviedb.org/3/search/movie?api_key=' + this.API_TOKEN + '&language=fr&query=' + text + "&page=" + page
-	
+
     this.http.get<Array<Film>>(url).subscribe(films=>{
       this.films = films;
       this.emitFilmsSubject()
@@ -72,12 +73,12 @@ export class FilmService {
 
 
   addrevue(revue:Revue){
-    const url = "http://localhost:3001/revues"
+    const url = environment["apiURL"]+"/revues"
     return this.http.post(url,revue)
   }
 
   getAllRevues(id:number){
-    const url = "http://localhost:3001/revues/"+id
+    const url = environment["apiURL"]+"/revues/"+id
     return this.http.get<Array<Revue>>(url)
   }
 
