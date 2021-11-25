@@ -20,10 +20,13 @@ export class SigninComponent implements OnInit {
   signin(email, password) {
     this.user = new User(1, email, password)
     this.authService.signin(this.user).subscribe(data=>{
-      console.log(data);
-      Cookies.set("isAuth",true)
-      Cookies.set("email",email)
-      this.router.navigate(['/']);
+      if(data.length>0){
+        Cookies.set("isAuth",true)
+        Cookies.set("email",email)
+        this.router.navigate(['/']);
+      }else{
+        alert("Check your username/password")
+      }
     })
   }
 

@@ -10,9 +10,9 @@ import Cookies from "js-cookie";
 export class AuthService {
 
   constructor(private http: HttpClient) {
-    
+
   }
-  
+
 
   signup(user: User)  {
     const url = "http://localhost:3001/auth/signup";
@@ -21,7 +21,7 @@ export class AuthService {
 
   signin(user: User) {
     const url = "http://localhost:3001/auth/signin";
-    return this.http.post(url,user)
+    return this.http.post<Array<String>>(url,user)
   }
 
   isAuth(){
