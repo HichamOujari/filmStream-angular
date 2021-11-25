@@ -22,6 +22,7 @@ export class AuthService {
 
   signin(user: User) {
     const url = environment["apiURL"]+"/auth/signin";
+    console.log("==> "+url)
     return this.http.post<Array<String>>(url,user)
   }
 
