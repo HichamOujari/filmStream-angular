@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  //apiURL:"http://localhost:3001",
-  apiURL:"https://film-stream-back.herokuapp.com"
+  apiURL:"http://localhost:3001"
 };
 
 /*
