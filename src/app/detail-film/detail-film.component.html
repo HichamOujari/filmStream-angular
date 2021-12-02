@@ -17,15 +17,16 @@
 
 <div class="addReview">
     <p class="title">Commentaire :</p>
-    <form (submit)="addrevue(revuedetail)" class="content">
+    <form (submit)="addrevue(revuedetail,rate)" class="content">
         <textarea #revuedetail class="textArea"></textarea>
+        <input type="number" #rate >
         <button>Valider</button>
     </form>
 </div>
 
 <ul class="revues">
     <li *ngFor="let r of revues; let index = index;">
-        <p class="name">By <span>{{r["name"]}}</span> at {{r["date"]}} : </p>
+        <p class="name">By <span>{{r["email"]}}</span> at {{r["date"]}} : </p>
         <p class="content">{{r["content"]}}</p>
     </li>
 </ul>

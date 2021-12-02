@@ -38,16 +38,16 @@ export class DetailFilmComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    
+
   }
 
-  addrevue(detail) {
+  addrevue(detail,rate) {
     var d = new Date();
     if (detail.value.length == 0) {
       alert("il faut ecrire un commentaire")
     } else {
       var date = [d.getMonth() + 1, d.getDate(), d.getFullYear()].join('/') + ' ' + [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
-      this.service.addrevue(new Revue(this.film.id, Cookies.get("email"), date, detail.value)).subscribe(rsp => {
+      this.service.addrevue(new Revue(this.film.id, Cookies.get("email"), date, detail.value,rate.value)).subscribe(rsp => {
         detail.value = ""
         this.getAllRevues();
       })
