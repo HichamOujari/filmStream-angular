@@ -17,16 +17,24 @@
 
 <div class="addReview">
     <p class="title">Commentaire :</p>
-    <form (submit)="addrevue(revuedetail,rate)" class="content">
+    <form (submit)="addrevue(revuedetail)" class="content">
         <textarea #revuedetail class="textArea"></textarea>
-        <input type="number" #rate >
+        <div class="rating">
+          <i (click)="setRating(1)" class="bi bi-star-fill {{rate>=1?'text-warning':'text-light'}}"> 1</i>
+          <i (click)="setRating(2)" class="bi bi-star-fill {{rate>=2?'text-warning':'text-light'}}"> 2</i>
+          <i (click)="setRating(3)" class="bi bi-star-fill {{rate>=3?'text-warning':'text-light'}}"> 3</i>
+          <i (click)="setRating(4)" class="bi bi-star-fill {{rate>=4?'text-warning':'text-light'}}"> 4</i>
+          <i (click)="setRating(5)" class="bi bi-star-fill {{rate>=5?'text-warning':'text-light'}}"> 5</i>
+        </div>
         <button>Valider</button>
     </form>
 </div>
 
 <ul class="revues">
     <li *ngFor="let r of revues; let index = index;">
-        <p class="name">By <span>{{r["email"]}}</span> at {{r["date"]}} : </p>
+        <p class="name"><i class="bi bi-star-fill text-warning">{{r["rate"]}}</i>  By <span>{{r["idUser"]}}</span> at {{r["date"]}} : </p>
         <p class="content">{{r["content"]}}</p>
     </li>
 </ul>
+
+<app-modal [err]="err"></app-modal>

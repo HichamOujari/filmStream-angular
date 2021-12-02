@@ -6,6 +6,7 @@ import { Subscription } from "rxjs";
 import { Revue } from "../models/revue";
 import Cookies from "js-cookie";
 import { DomSanitizer, SafeResourceUrl, } from '@angular/platform-browser';
+import { Favoris } from '../models/favoris';
 
 @Component({
   selector: 'app-detail-film',
@@ -19,9 +20,18 @@ export class DetailFilmComponent implements OnInit {
   urlVideo: SafeResourceUrl = "";
 
   revues;
+  rate = 0;
+  err="";
 
   constructor(public service: FilmService, private route: ActivatedRoute, public sanitizer: DomSanitizer) {
     this.service.getFilmById(this.route.params["_value"]["idmovie"])
+    if(Cookies.get("email")!=undefined){
+      this.service.isInFavoris(Cookies.get("email"),this.route.params["_value"]["idmovie"])
+      .then(rsp=>{
+        if(rsp.length!=0) this.isFavoris = true
+      })
+      .catch(err=>{console.log("=======================")})
+    }
     this.filmsSubscription = this.service.filmSubject.subscribe(rsp => {
       this.film = rsp as Film;
       document.title = "" + rsp["title"]
@@ -41,17 +51,25 @@ export class DetailFilmComponent implements OnInit {
 
   }
 
-  addrevue(detail,rate) {
+  addrevue(detail) {
     var d = new Date();
-    if (detail.value.length == 0) {
-      alert("il faut ecrire un commentaire")
-    } else {
-      var date = [d.getMonth() + 1, d.getDate(), d.getFullYear()].join('/') + ' ' + [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
-      this.service.addrevue(new Revue(this.film.id, Cookies.get("email"), date, detail.value,rate.value)).subscribe(rsp => {
-        detail.value = ""
-        this.getAllRevues();
-      })
+    if(Cookies.get("email")!=undefined){
+      if (detail.value.length == 0 || this.rate==0) {
+        this.err="il faut ecrire un commentaire et donner une note / 5"
+      } else {
+        var date = [d.getMonth() + 1, d.getDate(), d.getFullYear()].join('/') + ' ' + [d.getHours(), d.getMinutes(), d.getSeconds()].join(':');
+        this.service.addrevue(new Revue(this.film.id, Cookies.get("email"), date, detail.value,this.rate)).subscribe(rsp => {
+          detail.value = ""
+          this.getAllRevues();
+        })
+      }
+    }else{
+      this.err="Merci de se connecter"
     }
+  }
+
+  setRating(nbr){
+    this.rate=nbr;
   }
 
   getAllRevues() {
@@ -64,12 +82,16 @@ export class DetailFilmComponent implements OnInit {
 
 
   addFavoris() {
-    this.isFavoris = true;
-    this.service.addFavoris(this.film);
+    if(Cookies.get("email")!=undefined){
+      this.isFavoris = true;
+      this.service.addFavoris(new Favoris(this.film.id,Cookies.get("email"),this.film.poster_path,this.film.title));
+    }else{
+      this.err="Merci de se connecter"
+    }
   }
 
   removeFavoris() {
-    this.isFavoris = false;
+    //this.isFavoris = false;
   }
 
 }

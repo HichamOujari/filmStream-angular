@@ -1,14 +1,14 @@
 export class Revue {
     idFilm: number;
-    name: string;
+    idUser: string;
     date: string;
     content: string;
     rate: number;
 
 
-    constructor(idFilm:number,name: string,date: string,content:string,rate:number) {
+    constructor(idFilm:number,idUser: string,date: string,content:string,rate:number) {
         this.idFilm=idFilm;
-        this.name=name;
+        this.idUser=idUser;
         this.date=date;
         this.content=content;
         this.rate=rate;

@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { Film } from "../models/film";
 import { Revue } from "../models/revue";
 import { environment } from '../../environments/environment';
+import { Favoris } from '../models/favoris';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { environment } from '../../environments/environment';
 export class FilmService {
 
   API_TOKEN: any = "363cc63dd412c6fbbd34ded9d856afe1";
-  url = "https://moviestream-2f6d0-default-rtdb.firebaseio.com/movie.json";
+  //url = "https://moviestream-2f6d0-default-rtdb.firebaseio.com/movie.json";
   films:Array<any> = [];
   filmSubject = new Subject<any>();
 
@@ -63,30 +64,33 @@ export class FilmService {
     return 'https://image.tmdb.org/t/p/w300' + name;
   }
 
-  addFavoris(film:Film) {
-    this.http.post<Film>(this.url,film).subscribe(rsp=>console.log(rsp))
+  getAllRevues(id:number){
+    const url = environment["apiURL"]+"/revues/"+id
+    return this.http.get<Array<Revue>>(url)
   }
-
-  deleteFavoris(film:Film) {
-    //this.http.delete<Film>(this.url,film).subscribe(rsp=>console.log(rsp))
-  }
-
 
   addrevue(revue:Revue){
     const url = environment["apiURL"]+"/revues"
     return this.http.post(url,revue)
   }
 
-  getAllRevues(id:number){
-    const url = environment["apiURL"]+"/revues/"+id
-    return this.http.get<Array<Revue>>(url)
+  getAllFavoris(id) {
+    this.http.get<Array<Favoris>>(environment["apiURL"]+"/favoris"+"/"+id).subscribe(rsp=>{
+      this.filmsFavoris = rsp;
+      this.emitFilmsFavorisSubject();
+    })
   }
 
-  getAllFavoris() {
-    this.http.get<Array<Film>>(this.url).subscribe(rsp=>{
-      this.filmsFavoris = rsp;
-      this.emitFilmsFavorisSubject()
-    })
+  addFavoris(favoris:Favoris) {
+    this.http.post<Favoris>(environment["apiURL"]+"/favoris",favoris).subscribe(rsp=>console.log(rsp))
+  }
+
+  isInFavoris(idUser,idFilm) {
+    return this.http.get<Array<Favoris>>(environment["apiURL"]+"/favoris"+"/"+idUser+"/"+idFilm).toPromise()
+  }
+
+  deleteFavoris(film:Film) {
+    //this.http.delete<Film>(this.url,film).subscribe(rsp=>console.log(rsp))
   }
 
 }

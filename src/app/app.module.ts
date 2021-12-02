@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { ModalComponent } from './shared/modal/modal.component';
 
 @NgModule({
 
@@ -28,6 +29,7 @@ import { SigninComponent } from './auth/signin/signin.component';
     NotFoundComponent,
     SignupComponent,
     SigninComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
